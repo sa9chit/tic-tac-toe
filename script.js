@@ -29,19 +29,8 @@ let num = 0;
 let count = true;
 
 clickOnBtn.forEach((btn) => {
-  btn.addEventListener('mouseover', () => {
-    if (!btn.classList.contains('disabled')) {
-      btn.innerHTML = count ? "👌" : "🍑";
-    }
-  });
-
-  btn.addEventListener('mouseout', () => {
-    if (!btn.classList.contains('disabled')) {
-      if (btn.innerHTML === '' && !btn.classList.contains('clicked')) {
-        btn.innerHTML = '';
-      }
-    }
-  });
+ 
+  
 
 
 
