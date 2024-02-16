@@ -35,10 +35,7 @@ clickOnBtn.forEach((btn) => {
 
 
   btn.addEventListener("click", () => {
-    if (btn.innerHTML !== "") {
-      return; // Prevent clicking on a filled cell
-    }
-
+   
     num++;
 
     if (count) {
