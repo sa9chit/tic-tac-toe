@@ -1,9 +1,8 @@
 const btnParent = document.querySelector(".btn");
-const win = document.querySelector(".win");
+const win = document.querySelector(".win")
 const turn = document.querySelector(".turn");
-const winannounce = document.querySelector(".winner");
-const restart = document.querySelector(".restart");
-
+const winannounce = document.querySelector(".winner")
+const restart = document.querySelector(".restart")
 for (let i = 0; i < 9; i++) {
   const crtElem = document.createElement("button");
   btnParent.appendChild(crtElem);
@@ -25,59 +24,83 @@ let pattern1 = [
   [1, 4, 7],
 ];
 
-let num = 0;
+
+let num = 0
+
+let arrayTOContainValue = [];
+
 let count = true;
 
 clickOnBtn.forEach((btn) => {
+
  
-  
 
 
 
-  btn.addEventListener("click", () => {
-   
+
+
+
+
+
+  btn.addEventListener("click", (elem) => {
+
+
+    
+
     num++;
-
-    if (count) {
-      turn.innerHTML = "Player 2nd Turn";
-      btn.innerHTML = "X";
-    } else {
-      btn.innerHTML = "O";
-      turn.innerHTML = "Player 1's Turn";
+    console.log(num)
+    if(num >= 9){
+      win.innerHTML = "Draw 🤣🤣🤣🤣🤣"
+      winannounce.style.visibility = "visible"
+     
     }
+   
+if (count) {
 
-    btn.disabled = true;
-    count = !count; // Toggle the turn
-
+  turn.innerHTML = "Player 2nd Turn"
+    btn.innerHTML = "X"
+    count = false
+   
     if (num >= 9) {
-      win.innerHTML = "Draw 🤣🤣🤣🤣🤣";
-      winannounce.style.visibility = "visible";
+      turn.innerHTML = "Apko Khelna Nhi Aata 😒!"
+count = true
     }
+}else{
+    btn.innerHTML = 'O'
+count = true    
+turn.innerHTML = "Player 1's Turn"
+}
+btn.disabled = true;
 
-    check();
-  });
+check()
+  })
 });
 
-restart.addEventListener("click", () => {
-  location.reload();
-});
+restart.addEventListener("click",()=>{
+location.reload()
+})
 
-const check = () => {
-  for (const iterator of pattern1) {
-    let val1 = clickOnBtn[iterator[0]].innerHTML;
-    let val2 = clickOnBtn[iterator[1]].innerHTML;
-    let val3 = clickOnBtn[iterator[2]].innerHTML;
 
-    if (val1 !== "" && val2 !== "" && val3 !== "") {
-      if (val1 === val2 && val2 === val3) {
-        win.innerHTML = `Player ${val1} Winner !`;
-        winannounce.style.visibility = "visible";
-        if (val1 === "O") {
-          turn.innerHTML = `Player Second Win ! `;
-        } else {
-          turn.innerHTML = `Player First Win !`;
+const check = ()=>{
+    for (const iterator of pattern1) {
+        let val1 = clickOnBtn[iterator[0]].innerHTML
+        let val2 = clickOnBtn[iterator[1]].innerHTML
+        let val3 = clickOnBtn[iterator[2]].innerHTML
+
+
+        if (val1 != "" && val2 !="" && val3 != "") {
+            if (val1 === val2 && val2 === val3) {
+               win.innerHTML = `Player ${val1} Winner !`
+               winannounce.style.visibility = "visible"
+               if (val1 === "O"){
+                turn.innerHTML = `Player Second Win ! `
+               }else{
+                turn.innerHTML = `player First Win !`
+                
+              }
+              
+            }
         }
-      }
+       
     }
-  }
-};
+}
